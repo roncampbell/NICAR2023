@@ -17,3 +17,13 @@ Nonprofits must file annual public reports, generally known as Form 990, with th
 **990-PF** filed by private foundations regardless of the size of their gross receipts or total assets.
 
 ## Schedules
+
+Except for those filing the barebones e-Postcard, most nonprofits must include supplemental schedules with their 990s. Here's a list of the schedules and the forms that they typically accompany:
+
+* Schedule A - Public Charity Status and Public Support (990 or 990-EZ)
+* Schedule B - Contributors (990, 990-EZ, 990-PF)
+* Schedule C - Political Campaign and Lobbying Activities (990 or 990-EZ)
+* Schedule D - Supplemental Financial Statements (990)
+* Schedule E - Schools (990 or 990-EZ)
+* Schedule F - Activities Outside the United States (990)
+* Schedule G - Supplemental Information Regarding Fundraising or Gaming Activities (990 or 990-EZ)

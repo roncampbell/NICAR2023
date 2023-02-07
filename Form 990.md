@@ -8,7 +8,7 @@ Nonprofits must file annual public reports, generally known as Form 990, with th
 
 ## Forms
 
-**990-N (e-Postcard)** filed by nonprofits with gross receipts less than or equal to $50,000.
+**990-N (e-Postcard)** filed by nonprofits with gross receipts less than or equal to $50,000. For filing information, go [here](https://www.irs.gov/charities-non-profits/annual-electronic-filing-requirement-for-small-exempt-organizations-form-990-n-e-postcard).
 
 **990-EZ** filed by nonprofits with gross receipts less than $200,000 and total assets less than or equal to $500,000. For the form and instructions, go [here](https://www.irs.gov/forms-pubs/about-form-990-ez).
 

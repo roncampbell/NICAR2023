@@ -12,7 +12,7 @@ Nonprofits must file annual public reports, generally known as Form 990, with th
 
 **990-EZ** filed by nonprofits with gross receipts less than $200,000 and total assets less than or equal to $500,000. For the form and instructions, go [here](https://www.irs.gov/forms-pubs/about-form-990-ez).
 
-**990** filed by nonprofits with gross receipts greater than $200,000 OR total assets greater than $500,000. For the form, instructions, and all schedules, go [here](https://www.irs.gov/forms-pubs/about-form-990).
+**990** filed by nonprofits with gross receipts greater than $200,000 OR total assets greater than $500,000. For the form, instructions, and blank schedules, go [here](https://www.irs.gov/forms-pubs/about-form-990).
 
 **990-PF** filed by private foundations regardless of the size of their gross receipts or total assets. For the form and instructions, go [here](https://www.irs.gov/forms-pubs/about-form-990-pf).
 

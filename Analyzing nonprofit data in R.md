@@ -17,7 +17,7 @@ A few more points before we dig in:
 * Capitalization matters. If a variable is spelled "Cat", don't write "cat" or "CAT". 
 * Punctuation matters. R will help you by creating parentheses in pairs; don't erase closing parentheses by mistake.
 * Assign variables with this mark, <code><-</code> (left arrow and hyphen). The shortcut on Windows is Alt + minus sign; on Mac it is Option + minus sign.
-  * Separate two or more steps of a command with this mark, <code>%>%</code>. The shortcut on Windows is Ctrl + Shift + M; on Mac it is Command + Shift + M. It can be read as "after that, do this."
+* Separate two or more steps of a command with this mark, <code>%>%</code>. The shortcut on Windows is Ctrl + Shift + M; on Mac it is Command + Shift + M. It can be read as "after that, do this."
 * Comment out a line with the <code>#</code> (hash) mark
 * Finally, you can create a script in R. This Is A Big Deal. It means you can insert comments in your code. It means you can recheck every stage of your work. It means that if you get fresh data you can import that data and run an old analysis against the new data to see if the results change.
 

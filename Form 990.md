@@ -27,3 +27,12 @@ Except for those filing the barebones e-Postcard, most nonprofits must include s
 * Schedule E - Schools (990 or 990-EZ)
 * Schedule F - Activities Outside the United States (990)
 * Schedule G - Supplemental Information Regarding Fundraising or Gaming Activities (990 or 990-EZ)
+* Schedule H - Hospitals (990)
+* Schedule I - Grants and Other Assistance to Organizations, Governments, and Individuals in the U.S. (990)
+* Schedule J - Compensation Information (990)
+* Schedule K - Supplemental Information on Tax-Exempt Bonds (990)
+* Schedule L - Transactions with Interested Persons (990 or 990-EZ)
+* Schedule M - Noncash Contributions (990)
+* Schedule N - Liquidation, Termination, Dissolution, or Significant Disposition of Assets (990 or 990-EZ)
+* Schedule O - Supplemental Information to Form 990 or 990-EZ
+* Schedule R - Related Organizations and Unrelated Partnerships (990)

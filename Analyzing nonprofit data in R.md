@@ -32,9 +32,13 @@ In the script I've prepared, and which you can keep, you'll see that I try to be
 So let's load some libraries! If you haven't already installed the packages, do so now. 
 
 > library(tidyverse)
+  
 > library(readxl)
+  
 > library(lubridate)
+  
 > library(XML)
+  
 > library(xml2)
   
 

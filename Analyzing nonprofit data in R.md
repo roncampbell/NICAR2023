@@ -19,7 +19,7 @@ A few more points before we dig in:
 * Assign variables with this mark, <code><-</code> (left arrow and hyphen). The shortcut on Windows is Alt + minus sign; on Mac it is Option + minus sign.
 * Separate two or more steps of a command with this mark, <code>%>%</code>. The shortcut on Windows is Ctrl + Shift + M; on Mac it is Command + Shift + M. It can be read as "after that, do this."
 * Comment out a line with the <code>#</code> (hash) mark
-* Finally, you can create a script in R. This Is A Big Deal. It means you can insert comments in your code. It means you can recheck every stage of your work. It means that if you get fresh data you can import that data and run an old analysis against the new data to see if the results change.
+* Finally, you can create a script in R. This Is A Big Deal. It means you can insert comments in your code. It means you can recheck every stage of your work. It means that if you get fresh data you can import that data and recycle your old script using the new data to see if the results change.
 
 In the script I've prepared, and which you can keep, you'll see that I try to be organized. (It's probably because, by nature, I'm the exact opposite.) Anyway, here are the steps:
 
@@ -29,6 +29,13 @@ In the script I've prepared, and which you can keep, you'll see that I try to be
 4. Analyze and visualize data.
 5. Publish data.
 
-So let's load some libraries! Remember, the wonderful IRE/NICAR staff has already installed these packages, so we don't have to. 
+So let's load some libraries! If you haven't already installed the packages, do so now. 
 
-* > library(tidyverse)
+> library(tidyverse)
+> library(readxl)
+> library(lubridate)
+> library(XML)
+> library(xml2)
+  
+
+  

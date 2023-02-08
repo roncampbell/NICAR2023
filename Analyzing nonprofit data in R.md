@@ -110,7 +110,51 @@ Revoked <- Revoked %>%
          Date3 = dmy(Date3))
 ```
   
-
+Like the Charities file, the Revoked filed is a useful reference to keep. Never know when you might find someone raising money for an organization that lost its tax-exempt status!
+  
+Nearly 1.3 million nonprofits file the e-Postcard, an electronic form that essentially tells the IRS -- and the public -- that they still exist and that their annual revenues are $50,000 or less. The e-Postcard dataset is fairly hefty, 236 MB, and only minimally informative, but it's the one uniform source of data on small nonprofits.
+  
+```
+temp3 <- tempfile()
+download.file("https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip", 
+              temp3, mode = "wb")
+unzip(temp3, "data-download-epostcard.txt")
+unlink(temp3)
+Postcard <- read_delim("data-download-epostcard.txt", delim = "|", skip = 2,
+                       col_names = FALSE)
+```
+  
+The Postcard dataframe is 26 columns. The IRS provides little documentation to explain what's in any of those columns. I wasn't too surprised to discover that one column was blank. But I did figure out what all the others were and assigned them names.
+  
+```
+colnames(Postcard)[1] <- 'EIN'
+colnames(Postcard)[2] <- 'TaxYr'
+colnames(Postcard)[3] <- 'Organization'
+colnames(Postcard)[4] <- 'RevTest'
+colnames(Postcard)[5] <- 'OutOfBiz'
+colnames(Postcard)[6] <- 'FYBegin'
+colnames(Postcard)[7] <- 'FYEnd'
+colnames(Postcard)[8] <- 'Website'
+colnames(Postcard)[9] <- 'Officer'
+colnames(Postcard)[10] <- 'Address'
+colnames(Postcard)[11] <- 'AddrSuffix'
+colnames(Postcard)[12] <- 'City'
+colnames(Postcard)[13] <- 'Blank1'
+colnames(Postcard)[14] <- 'State'
+colnames(Postcard)[15] <- 'Zip'
+colnames(Postcard)[16] <- 'Country'
+colnames(Postcard)[17] <- 'Address2'
+colnames(Postcard)[18] <- 'AddressSuffix2'
+colnames(Postcard)[19] <- 'City2'
+colnames(Postcard)[20] <- 'State2a'
+colnames(Postcard)[21] <- 'State2'
+colnames(Postcard)[22] <- 'Zip2'
+colnames(Postcard)[23] <- 'Country2'
+colnames(Postcard)[24] <- 'DBA'
+colnames(Postcard)[25] <- 'DBA2'
+colnames(Postcard)[26] <- 'DBA3'
+```
+  
   
   
  

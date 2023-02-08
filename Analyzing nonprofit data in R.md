@@ -33,6 +33,8 @@ So let's load some libraries! If you haven't already installed the packages, do 
 
 > library(tidyverse)
   
+> library(httr)
+  
 > library(readxl)
   
 > library(lubridate)
@@ -41,5 +43,36 @@ So let's load some libraries! If you haven't already installed the packages, do 
   
 > library(xml2)
   
+Some of the data files are quite large -- dozens or even hundreds of megabytes in size, and much too large to use in a class. But you might find them useful. So I'll provide demo scripts here along with links that you can use later. I'll also include some smaller files that we can download and analyze in class.
+  
+The IRS has several useful files at [Tax Exempt Organization Search](https://www.irs.gov/charities-non-profits/tax-exempt-organization-search). For some odd reason, the files, all zipped, lack column headers. But no worries, I've written R scripts for importing, unzipping and adding column headers to the files.
 
+First up: Publication 78, the IRS list of nonprofits that can take tax-deductible contributions.
+  
+```
+  temp1 <- tempfile()
+download.file("https://apps.irs.gov/pub/epostcard/data-download-pub78.zip", temp1, 
+              mode = "wb")
+unzip(temp1,"data-download-pub78.txt") 
+unlink(temp1)
+Charities <- read_delim("data-download-pub78.txt", delim="|", skip = 2, 
+                        col_names = FALSE)
+  ```
+
+This will import about 1.2 million records into an R dataframe called Charities. Initially there will be six columns named "X1", "X2", etc. We fix that with the next command.
+  
+```
+  colnames(Charities)[1] <- 'EIN'
+colnames(Charities)[2] <- 'Organization'
+colnames(Charities)[3] <- 'City'
+colnames(Charities)[4] <- 'State'
+colnames(Charities)[5] <- 'Country'
+colnames(Charities)[6] <- 'Type'
+  ```
+
+You now have a desktop reference you can use anytime a group says it's a charity that can take tax-deductible contributions. Either it's on this list (assuming you have the latest version), or it's not. Caveat: Churches do not need IRS approval.
+  
+ 
+ 
+  
   

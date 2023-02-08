@@ -7,9 +7,13 @@ We'll be using R in this class. It can clean, analyze and visualze vast amounts 
 This repository pulls together several resources for analyzing nonprofits -- links to key IRS and nonprofit websites, a table of Form 990 versions and schedules, and a few scripts to import and analyze data.
 
 The IRS provides four different windows into the nonprofit world:
+
 **Reference information**, including employer identification numbers (EIN), organization names and addresses for every tax-exempt group; similar information for the tax-exempt groups that can accept tax-deductible contributions; and lists of groups that have lost their tax exemptions. In addition, every nonprofit with annual revenue under $50,000 is listed. For a script to download these files, see <code>IRS reference.R</code> in the Data folder.
+
 **Financial information** on almost every nonprofit. For a script using an extract, see <code>IRS statistics.R</code> in the Data folder. 
+
 **Complete 990s in digital (XML) format** (2015 to 2020).
+
 **Complete 990s in PDF format** (2016 to July 2022). 
 
 For those of you who are new to R or need a refresher, here are some tips:

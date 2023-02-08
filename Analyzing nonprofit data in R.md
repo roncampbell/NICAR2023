@@ -1,12 +1,18 @@
 There are more than a million nonprofit organizations in the United States. Together, they control billions of dollars in income and assets. But they attract too little attention from journalists.
 
-However, we have both the data and the tools to see what makes nonprofits tick -- data from <code>IRS Form 990</code> and tools in software such as <code>R</code> and <code>Python</code>.
+We have both the data and the tools to see what makes nonprofits tick -- data from <code>IRS Form 990</code> and tools in software such as <code>R</code> and <code>Python</code>.
 
-R, which we'll be using in this class, can clean, analyze and visualze vast amounts of data efficiently. Its power comes from the thousands of packages that programmers and scientists have created to extend it. 
+We'll be using R in this class. It can clean, analyze and visualze vast amounts of data efficiently. 
 
-This repository pulls together several resources for analyzing nonprofits -- links to key IRS and nonprofit websites, a table of Form 990 versions and schedules, a script (IRS reference.R) to get useful reference data like the list of tax-exempt data, and more scripts showing how to analyze bulk IRS data and statistical tables.
+This repository pulls together several resources for analyzing nonprofits -- links to key IRS and nonprofit websites, a table of Form 990 versions and schedules, and a few scripts to import and analyze data.
 
-But first, a few starter tips:
+The IRS provides four different windows into the nonprofit world:
+**Reference information**, including employer identification numbers (EIN), organization names and addresses for every tax-exempt group; similar information for the tax-exempt groups that can accept tax-deductible contributions; and lists of groups that have lost their tax exemptions. In addition, every nonprofit with annual revenue under $50,000 is listed. For a script to download these files, see <code>IRS reference.R</code> in the Data folder.
+**Financial information** on almost every nonprofit. For a script using an extract, see <code>IRS statistics.R</code> in the Data folder. 
+**Complete 990s in digital (XML) format** (2015 to 2020).
+**Complete 990s in PDF format** (2016 to July 2022). 
+
+For those of you who are new to R or need a refresher, here are some tips:
 
 In R, packages must be installed and then loaded. In this "bring your own laptop" class, you can load and install the necessary packages at the start or just watch and install them later. For future reference is how to install a package:
 
@@ -16,7 +22,7 @@ To load a package for use, simply enter this at the prompt:
 
 > library(xxx) [where xxx is the name of the package -- and notice, this time the package name is NOT in quotes]
 
-A few more points before we dig in:
+A few more points about R before we dig in:
 
 * Capitalization matters. If a variable is spelled "Cat", don't write "cat" or "CAT". 
 * Punctuation matters. R will help you by creating parentheses in pairs; don't erase closing parentheses by mistake.
@@ -25,14 +31,3 @@ A few more points before we dig in:
 * Comment out a line with the <code>#</code> (hash) mark
 
 We'll be using these libraries: tidyverse, httr, readxl, lubridate, XML and xml2. If you haven't already installed them, you'll need to do so before loading them for the class.
-  
-In this class, I'm going to teach using smaller files while providing you with scripts that use much larger files - files that probably would break the conference wifi. 
-  
-
-  
-
-  
-  
- 
-  
-  

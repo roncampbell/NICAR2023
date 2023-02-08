@@ -47,10 +47,10 @@ Some of the data files are quite large -- dozens or even hundreds of megabytes i
   
 The IRS has several useful files at [Tax Exempt Organization Search](https://www.irs.gov/charities-non-profits/tax-exempt-organization-search). For some odd reason, the files, all zipped, lack column headers. But no worries, I've written R scripts for importing, unzipping and adding column headers to the files.
 
-First up: Publication 78, the IRS list of nonprofits that can take tax-deductible contributions.
+First up: Publication 78, the IRS list of nonprofits that can take tax-deductible contributions. The complete file is about 90 MB.
   
 ```
-  temp1 <- tempfile()
+temp1 <- tempfile()
 download.file("https://apps.irs.gov/pub/epostcard/data-download-pub78.zip", temp1, 
               mode = "wb")
 unzip(temp1,"data-download-pub78.txt") 
@@ -62,7 +62,7 @@ Charities <- read_delim("data-download-pub78.txt", delim="|", skip = 2,
 This will import about 1.2 million records into an R dataframe called Charities. Initially there will be six columns named "X1", "X2", etc. We fix that with the next command.
   
 ```
-  colnames(Charities)[1] <- 'EIN'
+colnames(Charities)[1] <- 'EIN'
 colnames(Charities)[2] <- 'Organization'
 colnames(Charities)[3] <- 'City'
 colnames(Charities)[4] <- 'State'
@@ -72,7 +72,47 @@ colnames(Charities)[6] <- 'Type'
 
 You now have a desktop reference you can use anytime a group says it's a charity that can take tax-deductible contributions. Either it's on this list (assuming you have the latest version), or it's not. Caveat: Churches do not need IRS approval.
   
- 
+Next: Nonprofits that lose their tax-exempt status by failing to file for three consecutive years. The complete file is 120 MB.
+  
+```
+temp2 <- tempfile()
+download.file("https://apps.irs.gov/pub/epostcard/data-download-revocation.zip", 
+              temp2, mode = "wb")
+unzip(temp2, "data-download-revocation.txt")
+unlink(temp2)
+Revoked <- read_delim("data-download-revocation.txt", delim = "|", skip = 2,
+                      col_names = FALSE)
+```
+  
+This will import about 1 million records into an R dataframe called Revoked. Initially there will be 12 columns called "X1", "X2", etc. Again, we use the colnames() command to fix that.
+  
+```
+colnames(Revoked)[1] <- 'EIN'
+colnames(Revoked)[2] <- 'Organization'
+colnames(Revoked)[3] <- 'OrgSuffix'
+colnames(Revoked)[4] <- 'Address'
+colnames(Revoked)[5] <- 'City'
+colnames(Revoked)[6] <- 'State'
+colnames(Revoked)[7] <- 'ZIP'
+colnames(Revoked)[8] <- 'Country'
+colnames(Revoked)[9] <- 'Exempt'
+colnames(Revoked)[10] <- 'Date1'
+colnames(Revoked)[11] <- 'Date2'
+colnames(Revoked)[12] <- 'Date3'
+```
+  
+R imported the date fields in character format. They'll be much more useful formatted as true dates, which we can accomplish with the lubridate package, loaded earlier.
+  
+```
+Revoked <- Revoked %>% 
+  mutate(Date1 = dmy(Date1),
+         Date2 = dmy(Date2),
+         Date3 = dmy(Date3))
+```
+  
+
+  
+  
  
   
   

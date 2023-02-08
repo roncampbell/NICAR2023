@@ -154,7 +154,12 @@ colnames(Postcard)[24] <- 'DBA'
 colnames(Postcard)[25] <- 'DBA2'
 colnames(Postcard)[26] <- 'DBA3'
 ```
+
+The Charities dataframe captures only those nonprofits that can accept tax-deductible nonprofits. There are many more tax-exempt groups that cannot accept deductible contributions, for example trade groups and organizations engaged in lobbying. To get the full range of the nonprofit world, we need the [Exempt Organization Business Master File](https://www.irs.gov/charities-non-profits/exempt-organizations-business-master-file-extract-eo-bmf). 
   
+You can download the Business Master File for an individual state or in four comma-separated variable (CSV) files covering multi-state regions. When merged, the file is about 325 MB. Be sure to specify the column types, in particular for the first column, EIN, which must be formatted as character since it often contains leading zeroes. 
+  
+
   
   
  

@@ -44,6 +44,11 @@ Doc990_2021 <- read_excel("21eofinextractdoc.xlsx", sheet = 1, skip = 2)
 
 View(Doc990_2021)
 
+BizFile <- read_csv("BizFile_Extract.csv")
+
+# merge portions of Extract990_2021 with BizFile
+Extract990_2021a <- inner_join(select(BizFile, EIN, NAME, CITY, STATE, ZIP
+
 # select and rename key fields, arrange by total revenue descending
 Extract990_2021a <- Extract990_2021 %>% 
   select(EIN, tax_pd, subseccd, 

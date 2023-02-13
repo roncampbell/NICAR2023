@@ -15,9 +15,8 @@ library(readxl)
 # The 2021 files range in size from 377 MB for 990s to 95 MB for 990-PFs to 68 MB for 990-EZs.
 # The file 21eofinextractdoc.xlsx is a data dictionary for all three data workbooks; it's in the Data folder.
 
-# In this script we use a 1.6 MB random sample of the 2021 990 file.
-# It's impractical to use the Business Master File in a classroom setting, so we won't be able to identify individual nonprofits.
-# Technique for joining Business Master File to statistical data is shown at bottom of file.
+# In this script we use a 1.6 MB random sample of the 2021 990 file, Extract990_2021.xlsx
+# We join that with a 300 KB extract from the Business Master File, BusinessFile_Extract.csv
 
 # import random sample of financial data from 2021 Form 990s
 Extract990_2021 <- ("Extract990_2021.xlsx")

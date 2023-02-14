@@ -1,6 +1,6 @@
 There are more than a million nonprofit organizations in the United States. Together, they control billions of dollars in income and assets. But they attract too little attention from journalists.
 
-We have both the data and the tools to see what makes nonprofits tick -- data from <code>IRS Form 990</code> and tools in software such as <code>R</code> and <code>Python</code>.
+Fortunately, we have both data and tools to see what makes nonprofits tick -- data from <code>IRS Form 990</code> and tools in software such as <code>R</code> and <code>Python</code>.
 
 We'll be using R in this class. It can clean, analyze and visualze vast amounts of data efficiently. 
 
@@ -8,9 +8,9 @@ This repository pulls together several resources for analyzing nonprofits -- lin
 
 The IRS provides four different windows into the nonprofit world:
 
-**Reference information**, including employer identification numbers (EIN), organization names and addresses for every tax-exempt group; similar information for the tax-exempt groups that can accept tax-deductible contributions; and lists of groups that have lost their tax exemptions. In addition, every nonprofit with annual revenue under $50,000 is listed. For a script to download these files, see <code>IRS reference.R</code> in the Data folder.
+**Reference information**, including employer identification numbers (EIN), organization names and addresses for every tax-exempt group; similar information for the tax-exempt groups that can accept tax-deductible contributions; and lists of groups that have lost their tax exemptions. In addition, every nonprofit with annual revenue under $50,000 is listed. For a script to download these files, see <code>IRS reference.R</code>.
 
-**Financial information** on almost every nonprofit. For a script using an extract, see <code>IRS statistics.R</code> in the Data folder. 
+**Financial information** on almost every nonprofit. For a script using an extract, see <code>IRS statistics.R</code>. You can tweak this code to analyze the full, 200+ MB dataset, available at the IRS website.
 
 **Complete 990s in digital (XML) format** (2015 to 2020).
 
@@ -20,13 +20,13 @@ The reference files are valuable for watchdog reporting on nonprofits, whether y
 
 Even very small nonprofits file public returns with the IRS each year -- basically saying, "yep, we're still alive" -- and the e-Postcard database will list the ones in your neighborhood.
 
-Ah, financial information. Combine these big files (hundreds of megabytes a year) with the Business Master File), and you can compare dozens, even hundreds of nonprofits in a few minutes. Who were the biggest nonprofits in your state measured by total revenue? Which ones had the highest percentage of employees earning $100,000 or more? Which groups said they did business with their own officers? The story list is endless.
+Ah, financial information. Join these big files (hundreds of megabytes a year) with the Business Master File, and you can analyze hundreds, even thousands of nonprofits in a few minutes. Who were the biggest nonprofits in your state measured by total revenue? Which ones had the highest percentage of employees earning $100,000 or more? Which groups said they did business with their own officers? The story list is endless.
 
-Now we get to the complicated but potentially more revealing part: complete 990s. They're available in two troublesome formats -- as PDFs, which are all but impossible to parse unless you know exactly what you're doing -- or as XMLs, which are merely infuriating. 
+Now we get to the complicated but potentially more revealing part: complete 990s. They're available in two troublesome formats -- as PDFs, which are all but impossible to parse unless you know exactly what you're doing -- or as XMLs, which are infuriating. 
 
 The IRS has built useful though non-intuitive indexes for the PDFs. The indexes for the XML files, on the other hand, are worthless; in answer to an email from me, the IRS admitted that it was impossible to find individual XML files based on index entries without unzipping and combining eight folders and searching through the combined contents -- about 330,000 files occupying about 16 GB. Good luck with that.
 
-For this class, I downloaded a handful of 990s in XML format more or less at random. I hope that in the future someone, either at the IRS or elsewhere, will develop a tool to search the IRS XML archive for individual forms. If the archive is ever to become useful, a search tool is essential.
+In this class, we will analyze a random sample of about 1,500 990s filed during 2021. We'll combine that sample with corresponding information from the Business Master File to get identifying data, including names and addresses. 
 
 For those of you who are new to R or need a refresher, here are some tips:
 

@@ -12,6 +12,7 @@ library(httr)
 library(lubridate)
 
 # import Publication 78 list of orgs that can accept tax-deductible contributions; size is 90 MB.
+# can be imported to computer, then loaded into R (with step beginning "read_delim"), or can be imported directly from internet to R.
 temp1 <- tempfile()
 download.file("https://apps.irs.gov/pub/epostcard/data-download-pub78.zip", temp1, 
               mode = "wb")
@@ -123,3 +124,7 @@ BizFileAll <- rbind(BizFile1,
 # remove trailing zeroes from Classification field in BizFileAll
 BizFileAll <- BizFileAll %>%
   mutate(Classification = str_remove(CLASSIFICATION, "0+$"))
+
+# import ExemptClasses, classification codes from IRS Exempt Organization Business Master File,
+# https://www.irs.gov/pub/irs-soi/eo_info.pdf, listing codes identifying general purpose for each nonprofit organization
+ExemptClasses <- read_csv("ExemptClasses.csv", col_types = "ccc")

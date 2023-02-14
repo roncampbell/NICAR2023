@@ -79,7 +79,7 @@ Extract990_2021b <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
                                by = "EIN") %>% 
   filter(Loan2Officer == 'Y' | Officer_Biz == 'Y')
           
-View(Extract990_2021b)
+View(Extract990_2021b)    # 61 results
           
 # find contributions to groups that cannot accept tax-deductible contributions
 Extract990_2021c <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP, DEDUCTIBILITY),
@@ -90,10 +90,41 @@ Extract990_2021c <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
   filter(DEDUCTIBILITY == 2) %>% 
   arrange(desc(Contributions))
           
-View(Extract990_2021c)
+View(Extract990_2021c)    # 315 results
                                       
-
 # find percentage of employees paid over $100k
-Extract990_2021a <- Extract990_2021a %>% 
-  mutate(Per100k = (noindiv100kcnt / employe_cnt) * 100)
+Extract990_2021d <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP),
+                               select(Extract990_2021, EIN, 
+                                      TotalRev = totrevenue,
+                                      Employees = noemplyeesw3cnt,
+                                      Over100k = noindiv100kcnt,
+                                      ) %>%
+                               by = "EIN" %>%
+  mutate(Per100k = (Over100k / Employees) * 100) %>%
+    filter(Employees >= 10 & TotalRev >= 1000000) %>% 
+    arrange(desc(Per100k)) 
+                               
+View(Extract990_2021d)    # 308 results
 
+# find contributions and revenues by IRS classification
+# do this in two steps, first merging IRS sub-classes with EINs, then summarising revenue / contributions with sub-classes
+
+SubClass <- left_join(select(BizFile_Extract, EIN, SUBSECTION, CLASSIFICATION),
+                       ExemptClasses,
+            by = c("SUBSECTION" = "SUBSECTION",
+                   "CLASSIFICATION" = "CLASSIFICATION"))
+                               
+View(SubClass)    # 1,508 results
+                               
+SubClassSum <- inner_join(select(SubClass, Description, EIN),
+                        select(Extract990_2021a, EIN,
+                               Contributions = totcntrbgfts,
+                               TotalRev = totrevenue),
+                        by = "EIN") %>% 
+  group_by(Description) %>% 
+  summarise(Count = n(),
+            Donations = sum(Contributions),
+            Revenue = sum(TotalRev)) %>% 
+  arrange(desc(Revenue))
+                               
+View(SubClassSum)   # 33 results

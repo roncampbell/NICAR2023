@@ -119,3 +119,7 @@ BizFileAll <- rbind(BizFile1,
                     BizFile2,
                     BizFile3,
                     BizFile4)
+
+# remove trailing zeroes from Classification field in BizFileAll
+BizFileAll <- BizFileAll %>%
+  mutate(Classification = str_remove(CLASSIFICATION, "0+$"))

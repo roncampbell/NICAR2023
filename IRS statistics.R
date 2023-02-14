@@ -43,42 +43,57 @@ Doc990_2021 <- read_excel("21eofinextractdoc.xlsx", sheet = 1, skip = 2)
 
 View(Doc990_2021)
 
-BizFile <- read_csv("BizFile_Extract.csv")
+# import IRS Business Master File info for our random sample of nonprofits
+BizFile_Extract <- read_csv("BizFile_Extract.csv",
+                   col_types = "cccccccccccncccccncccccnnncc")
 
-# merge portions of Extract990_2021 with BizFile
-Extract990_2021a <- inner_join(select(BizFile, EIN, NAME, CITY, STATE, ZIP
+View(BizFile_Extract)
 
-# select and rename key fields, arrange by total revenue descending
-Extract990_2021a <- Extract990_2021 %>% 
-  select(EIN, tax_pd, subseccd, 
-         employe_cnt = noemplyeesw3cnt, 
-         totreprtabled, noindiv100kcnt, nocontractor100kcnt,
-         contributions = totcntrbgfts, 
-         progrev = totprgmrevnue,
-         invstmntinc, totalrev = totrevenue) %>% 
-  arrange(desc(totalrev))
+# remove trailing zeroes from classification field in BizFile_Extract
+BizFile_Extract <- BizFile_Extract %>%
+  mutate(CLASSIFICATION = str_remove(CLASSIFICATION, "0+$"))
+
+# import IRS nonprofit classification codes from Exempt Organization Business Master File documentation
+ExemptClasses <- read_csv("ExemptClasses.csv", col_types = "ccc")
+
+# identify nonprofits by total revenue and contributions
+Extract990_2021a <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP),
+                               select(Extract990_2021, EIN, tax_pd,
+                                      Employees = noemplyeesw3cnt,
+                                      Contributions = totcntrbgfts,
+                                      ProgramRev = totprgmrevnue,
+                                      OtherRev = miscrevtot11e,
+                                      TotalRev = totrevenue),
+                               by = "EIN") %>%
+  arrange(desc(TotalRev)
+          
+View(Extract990_2021a)
+          
+# use Y/N columns to identify nonprofits engaged in insider deals
+Extract990_2021b <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP),
+                               select(Extract990_2021, EIN, 
+                                      Employees = noemplyeesw3cnt,
+                                      TotalRev = totrevenue,
+                                      Loan2Officer = loantofficercd,
+                                      Officer_Biz = servasofficercd),
+                               by = "EIN") %>% 
+  filter(Loan2Officer == 'Y' | Officer_Biz == 'Y')
+          
+View(Extract990_2021b)
+          
+# find contributions to groups that cannot accept tax-deductible contributions
+Extract990_2021c <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP, DEDUCTIBILITY),
+                               select(Extract990_2021, EIN, tax_pd, 
+                                      Contributions = totcntrbgfts,
+                                      TotalRev = totrevenue),
+                               by = "EIN") %>% 
+  filter(DEDUCTIBILITY == 2) %>% 
+  arrange(desc(Contributions))
+          
+View(Extract990_2021c)
+                                      
 
 # find percentage of employees paid over $100k
 Extract990_2021a <- Extract990_2021a %>% 
   mutate(Per100k = (noindiv100kcnt / employe_cnt) * 100)
 
-# find insider deals using the Y/N columns
-Extract990_2021b <- Extract990_2021 %>% 
-  select(EIN, excessbenefit = engageexcessbnftcd,
-         loan2officer = loantofficercd,
-         grant2relpty = grantoofficercd,
-         officer_biz = servasofficercd) %>% 
-  filter(loan2officer == 'Y' | officer_biz == 'Y')
-
-# to identify nonprofits by name, join 990 statistical files with BusinessFileAll, the Business Master File created in IRS reference.R
-# demo only, BizFileAll is not loaded
-
-# Extract990_2021c <- inner_join(select(BizFileAll, EIN, NAME, CITY, STATE),
-#                               select(Extract990_2021, EIN, tax_pd, subseccd, 
-#                                     employe_cnt = noemplyeesw3cnt, 
-#                                     totreprtabled, noindiv100kcnt, nocontractor100kcnt,
-#                                     contributions = totcntrbgfts, 
-#                                     progrev = totprgmrevnue,
-#                                     invstmntinc, totalrev = totrevenue),
-#                              by = "EIN") %>% 
-#  arrange(desc(totalrev))

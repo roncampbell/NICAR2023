@@ -50,4 +50,4 @@ A few more points about R before we dig in:
 * Separate two or more steps of a command with this mark, <code>%>%</code>. The shortcut on Windows is Ctrl + Shift + M; on Mac it is Command + Shift + M. It can be read as "after that, do this."
 * Comment out a line with the <code>#</code> (hash) mark
 
-We'll be using these libraries: tidyverse, httr, readxl, lubridate, XML and xml2. If you haven't already installed them, you'll need to do so before loading them for the class.
+We'll be using these libraries: tidyverse, httr, readxl, and lubridate. If you haven't already installed them, you'll need to do so before loading them for the class.

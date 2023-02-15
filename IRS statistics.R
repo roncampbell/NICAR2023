@@ -128,3 +128,26 @@ SubClassSum <- inner_join(select(SubClass, Description, EIN),
   arrange(desc(Revenue))
                                
 View(SubClassSum)   # 33 results
+                    
+# import NTEE codes
+NTEE <- read_csv("NTEE_Codes.csv")
+                               
+View(NTEE)
+                               
+# find contributions and revenues by NTEE description - another two-step process
+NTEEDesc <- inner_join(select(BizFile_Extract, EIN, NTEE_CD),
+                      NTEE,
+by = c("NTEE_CD" = "Code"))
+                               
+NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
+                        select(Extract990_2021a, EIN,
+                               Contributions = totcntrbgfts,
+                               TotalRev = totrevenue),
+                        by = "EIN") %>% 
+  group_by(Description) %>% 
+  summarise(Count = n(),
+            Donations = sum(Contributions),
+            Revenue = sum(TotalRev)) %>% 
+  arrange(desc(Revenue))
+                               
+View(NTEETotal)

@@ -16,6 +16,10 @@ The IRS provides four different windows into the nonprofit world:
 
 **Complete 990s in PDF format** (2016 to July 2022). 
 
+In addition to the 990s, the IRS has compiled valuable background material on nonprofits. The most important of these is the **Exempt Organization Business Master File**, a database of more than 1.8 million groups. Apart from the database, the documentation contains a wealth of information on nonprofits including the code sheet for the **National Taxonomy of Exempt Entities**. 
+
+Adopted in January 1995, the NTEE Codes replaced the clunky classification code system as a means of describing what nonprofits actually do. Nearly half the nonprofits in the Business Master File now have NTEE Codes. There are 25 broad NTEE categories - one for each letter from A to Y, plus the inevitable "unknown" (Z99) -- and more than 600 narrow specialties from A01 (Alliances & Advocacy in the Arts, Culture & Humanities category) to Y99 (Mutual & Membership Benefit not elsewhere categorized in the Mutual & Membership Benefit category).
+
 The reference files are valuable for watchdog reporting on nonprofits, whether you're covering a city, a state or the whole country. Want to know if a new organization in town really is tax-exempt? It should be in the Business Master File unless it's a) a church or b) newly established and still seeking recognition from the IRS. Want to know if contributions to the group really are tax-deductible? Then it should be listed in Publication 78, again with the same qualifiers.
 
 Even very small nonprofits file public returns with the IRS each year -- basically saying, "yep, we're still alive" -- and the e-Postcard database will list the ones in your neighborhood.

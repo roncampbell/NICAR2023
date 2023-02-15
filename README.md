@@ -10,5 +10,5 @@ The repo contains a number of important files, including:
  - A reference table of 990 forms and schedules, *Form 990.md*
  - A list of codes used in the Exempt Organization Business Master File, in *EO reference.pdf*
 
-People wanting to work with this data should have the latest versions of R and R studio installed. You'll also want some R packages installed from within R: tidyverse, httr, readxl, lubridate, XML and xml2. You may wish to try to install them all at once with an R command like 
-> install.packages(c("tidyverse", "httr", "readxl", "lubridate", "XML", "xml2"))
+People wanting to work with this data should have the latest versions of R and R studio installed. You'll also want some R packages installed from within R: tidyverse, httr, readxl, and lubridate. You may wish to try to install them all at once with an R command like 
+> install.packages(c("tidyverse", "httr", "readxl", "lubridate"))

@@ -134,7 +134,7 @@ NTEE <- read_csv("NTEE_Codes.csv")
                                
 View(NTEE)
                                
-# find contributions and revenues by NTEE description - another two-step process
+# find contributions and revenues by NTEE description  and category - another two-step process
 NTEEDesc <- inner_join(select(BizFile_Extract, EIN, NTEE_CD),
                       NTEE,
 by = c("NTEE_CD" = "Code"))
@@ -151,3 +151,16 @@ NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
   arrange(desc(Revenue))
                                
 View(NTEETotal)
+                               
+NTEECategory <- inner_join(select(NTEESum, EIN, Category),
+                           select(Extract990_2021a, EIN,
+                                  Contributions = totcntrbgfts,
+                                  TotalRev = totrevenue),
+                           by = "EIN") %>% 
+  group_by(Category) %>% 
+  summarise(Count = n(),
+            Donations = sum(Contributions),
+            Revenue = sum(TotalRev)) %>% 
+  arrange(desc(Revenue))
+                               
+View(NTEECategory)

@@ -101,9 +101,8 @@ Extract990_2021d <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
                                select(Extract990_2021, EIN, 
                                       TotalRev = totrevenue,
                                       Employees = noemplyeesw3cnt,
-                                      Over100k = noindiv100kcnt,
-                                      ) %>%
-                               by = "EIN" %>%
+                                      Over100k = noindiv100kcnt),
+                               by = "EIN") %>%
   mutate(Per100k = (Over100k / Employees) * 100) %>%
     filter(Employees >= 10 & TotalRev >= 1000000) %>% 
     arrange(desc(Per100k)) 

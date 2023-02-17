@@ -3,6 +3,10 @@
 ##################
 
 # set working directory and load packages
+if (!file.exists("Extract990_2021.xlsx")) {
+  cat("Files missing from working directory of ", getwd(), ". Do you need to change that working directory?")
+/// Print out a warning message about missing files, and show what directory R is working out of
+  # setwd("/data/NICAR2023")
 setwd(".")
 library(tidyverse)
 library(readxl)

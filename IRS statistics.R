@@ -119,7 +119,7 @@ SubClass <- left_join(select(BizFile_Extract, EIN, SUBSECTION, CLASSIFICATION),
 View(SubClass)    # 1,508 results
                                
 SubClassSum <- inner_join(select(SubClass, Description, EIN),
-                        select(Extract990_2021a, EIN,
+                        select(Extract990_2021, EIN,
                                Contributions = totcntrbgfts,
                                TotalRev = totrevenue),
                         by = "EIN") %>% 
@@ -142,7 +142,7 @@ NTEEDesc <- inner_join(select(BizFile_Extract, EIN, NTEE_CD),
 by = c("NTEE_CD" = "Code"))
                                
 NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
-                        select(Extract990_2021a, EIN,
+                        select(Extract990_2021, EIN,
                                Contributions = totcntrbgfts,
                                TotalRev = totrevenue),
                         by = "EIN") %>% 
@@ -155,7 +155,7 @@ NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
 View(NTEETotal)
                                
 NTEECategory <- inner_join(select(NTEESum, EIN, Category),
-                           select(Extract990_2021a, EIN,
+                           select(Extract990_2021, EIN,
                                   Contributions = totcntrbgfts,
                                   TotalRev = totrevenue),
                            by = "EIN") %>% 

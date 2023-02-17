@@ -3,7 +3,11 @@
 ##################
 
 # set working directory and load packages
-setwd()
+if (!file.exists("Extract990_2021.xlsx")) {
+  cat("Files missing from working directory of ", getwd(), ". Do you need to change that working directory?")
+  # setwd("/data/NICAR2023")  
+}
+
 library(tidyverse)
 library(readxl)
 
@@ -19,7 +23,7 @@ library(readxl)
 # We join that with a 300 KB extract from the Business Master File, BusinessFile_Extract.csv
 
 # import random sample of financial data from 2021 Form 990s
-Extract990_2021 <- ("Extract990_2021.xlsx")
+Extract990_2021 <- read_excel("Extract990_2021.xlsx")
 
 View(Extract990_2021)
 

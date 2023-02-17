@@ -69,7 +69,7 @@ Extract990_2021a <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
                                       OtherRev = miscrevtot11e,
                                       TotalRev = totrevenue),
                                by = "EIN") %>%
-  arrange(desc(TotalRev)
+  arrange(desc(TotalRev))
           
 View(Extract990_2021a)
           

@@ -154,7 +154,7 @@ NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
                                
 View(NTEETotal)
                                
-NTEECategory <- inner_join(select(NTEESum, EIN, Category),
+NTEECategory <- inner_join(select(NTEEDesc, EIN, Category),
                            select(Extract990_2021, EIN,
                                   Contributions = totcntrbgfts,
                                   TotalRev = totrevenue),

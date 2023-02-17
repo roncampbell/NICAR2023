@@ -1,0 +1,56 @@
+SUBSECTION,CLASSIFICATION,Description
+01,1,Government Instrumentality
+02,1,Title-Holding Corporation
+03,1,Charitable Organization
+03,2,Educational Organization
+03,3,Literary Organization
+03,4,Organization to Prevent Cruelty to Animals
+03,5,Organization to Prevent Cruelty to Children
+03,6,Organization for Public Safety Testing
+03,7,Religious Organization
+03,8,Scientific Organization
+04,1,Civic League
+04,2,Local Association of Employees
+04,3,Social Welfare Organization
+05,1,Agricultural Organization
+05,2,Horticultural Organization
+05,3,Labor Organization
+06,1,Board of Trade
+06,2,Business League
+06,3,Chamber of Commerce
+06,4,Real Estate Board
+07,1,"Pleasure, Recreational, or Social Club"
+08,1,"Fraternal Beneficiary Society, Order or Association"
+09,1,Voluntary Employees' Beneficiary Association (Non-Govt. Emps.)
+09,2,Voluntary Employees' Beneficiary Association (Govt. Emps.)
+10,1,Domestic Fraternal Societies and Associations
+11,1,Teachers Retirement Fund Assoc.
+12,1,Benevolent Life Insurance Assoc.
+12,2,Mutual Ditch or Irrigation Co.
+12,3,Mutual Cooperative Telephone Co.
+12,4,Organization Like Those on Three Preceding Lines
+13,1,Burial Association
+13,2,Cemetery Company
+14,1,Credit Union
+14,2,Other Mutual Corp. or Assoc.
+15,1,Mutual Insurance Company or Assoc. Other Than Life or Marine
+16,1,Corp. Financing Crop Operations
+17,1,Supplemental Unemployment Compensation Trust or Plan
+18,1,Employee Funded Pension Trust (Created Before 6/25/59)
+19,1,Post or Organization of War Veterans
+20,1,Legal Service Organization
+21,1,Black Lung Trust
+22,1,Multiemployer Pension Plan
+23,1,Veterans Assoc. Formed Prior to 1880
+24,1,Trust Described in Sect. 4049 of ERISA
+25,1,"Title Holding Co. for Pensions, etc."
+26,1,State-Sponsored High Risk Health Insurance Organizations
+27,1,State-Sponsored Workers' Compensation Reinsurance
+29,1,ACA 1322 Qualified Nonprofit Health Insurance Issuers
+40,1,Apostolic and Religious Org. (501(d))
+50,1,Cooperative Hospital Service Organization (501(e))
+60,1,Cooperative Service Organization of Operating Educational Organization (501(f))
+70,1,Child Care Organization (501(k))
+71,1,Charitable Risk Pool
+81,1,Qualified State-Sponsored Tuition Program
+92,1,4947(a)(1) - Private Foundation (Form 990PF Filer)

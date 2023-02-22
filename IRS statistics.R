@@ -82,7 +82,7 @@ Extract990_2021b <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
                                by = "EIN") %>% 
   filter(Loan2Officer == 'Y' | Officer_Biz == 'Y')
           
-View(Extract990_2021b)    # 61 results
+View(Extract990_2021b)    # 62 results
           
 # find contributions to groups that cannot accept tax-deductible contributions
 Extract990_2021c <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP, DEDUCTIBILITY),
@@ -116,7 +116,7 @@ SubClass <- left_join(select(BizFile_Extract, EIN, SUBSECTION, CLASSIFICATION),
             by = c("SUBSECTION" = "SUBSECTION",
                    "CLASSIFICATION" = "CLASSIFICATION"))
                                
-View(SubClass)    # 1,508 results
+View(SubClass)    # 1,509 results
                                
 SubClassSum <- inner_join(select(SubClass, Description, EIN),
                         select(Extract990_2021, EIN,
@@ -152,7 +152,7 @@ NTEETotal <- inner_join(select(NTEEDesc, EIN, Description),
             Revenue = sum(TotalRev)) %>% 
   arrange(desc(Revenue))
                                
-View(NTEETotal)
+View(NTEETotal)     # 197 results
                                
 NTEECategory <- inner_join(select(NTEEDesc, EIN, Category),
                            select(Extract990_2021, EIN,
@@ -165,4 +165,4 @@ NTEECategory <- inner_join(select(NTEEDesc, EIN, Category),
             Revenue = sum(TotalRev)) %>% 
   arrange(desc(Revenue))
                                
-View(NTEECategory)
+View(NTEECategory)  # 25 results

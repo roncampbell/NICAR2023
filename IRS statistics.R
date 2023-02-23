@@ -56,9 +56,6 @@ View(BizFile_Extract)
 BizFile_Extract <- BizFile_Extract %>%
   mutate(CLASSIFICATION = str_remove(CLASSIFICATION, "0+$"))
 
-# import IRS nonprofit classification codes from Exempt Organization Business Master File documentation
-ExemptClasses <- read_csv("ExemptClasses.csv", col_types = "ccc")
-
 # identify nonprofits by total revenue and contributions
 Extract990_2021a <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP),
                                select(Extract990_2021, EIN, tax_pd,
@@ -82,7 +79,7 @@ Extract990_2021b <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
                                by = "EIN") %>% 
   filter(Loan2Officer == 'Y' | Officer_Biz == 'Y')
           
-View(Extract990_2021b)    # 62 results
+View(Extract990_2021b)    # 60 results
           
 # find contributions to groups that cannot accept tax-deductible contributions
 Extract990_2021c <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, STATE, ZIP, DEDUCTIBILITY),
@@ -107,6 +104,9 @@ Extract990_2021d <- inner_join(select(BizFile_Extract, EIN, NAME, STREET, CITY, 
     arrange(desc(Per100k)) 
                                
 View(Extract990_2021d)    # 308 results
+
+# import IRS nonprofit classification codes from Exempt Organization Business Master File documentation
+ExemptClasses <- read_csv("ExemptClasses.csv", col_types = "ccc")
 
 # find contributions and revenues by IRS classification
 # do this in two steps, first merging IRS sub-classes with EINs, then summarising revenue / contributions with sub-classes
